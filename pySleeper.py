@@ -3,7 +3,9 @@ import os
 from PIL import Image, ImageTk
 os.system('cls')
 
-bg_path = (r"C:\Users\muzo1\Desktop\Coding\Projects\pySleeper\night.jpg")#You should change this path with yours!
+bg_path = os.path.dirname(__file__)
+bg_path = bg_path + "\\bg_img.jpg"
+
 
 def shutdown(): #Shutdown Mode
     time = timeBox.get()
@@ -20,6 +22,7 @@ def sleep():  #Sleep Mode
 
 def cancel():  #Cancel Shutdown
     os.system('cmd /c "shutdown -a')
+    print(test)
 
 app =  Tk()  #Create the window
 
@@ -49,13 +52,13 @@ header.place(relx=0.34,rely=0.6, relwidth=0.35,relheight=0.05)
 timeBox = Entry(app, width = 15, background="SlateBlue",relief="sunken",foreground="White")
 timeBox.place(relx=0.42,rely=0.65, relwidth=0.2,relheight=0.05)
 
-sleep = Button(app, text="UYUT", command=sleep, height=2, width=15,background="MidnightBlue",relief="ridge",foreground="MediumSlateBlue")
+sleep = Button(app, text="Sleep", command=sleep, height=2, width=15,background="MidnightBlue",relief="ridge",foreground="MediumSlateBlue")
 sleep.place(relx=0.42,rely=0.75, relwidth=0.2,relheight=0.05)
 
-shutdown = Button(app, text="KAPAT", command=shutdown, height=2, width=15,background="MidnightBlue",relief="ridge",foreground="MediumSlateBlue")
+shutdown = Button(app, text="Shutdown", command=shutdown, height=2, width=15,background="MidnightBlue",relief="ridge",foreground="MediumSlateBlue")
 shutdown.place(relx=0.42,rely=0.70, relwidth=0.2,relheight=0.05)
 
-cancel = Button(app, text="Kapatmayı iptal et!", command=cancel, height=2, width=15,background="MidnightBlue",relief="ridge",foreground="MediumSlateBlue")
+cancel = Button(app, text="Cancel the shutdown", command=cancel, height=2, width=15,background="MidnightBlue",relief="ridge",foreground="MediumSlateBlue")
 cancel.place(relx=0.42,rely=0.8, relwidth=0.2,relheight=0.05)
 
 
