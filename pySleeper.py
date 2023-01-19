@@ -3,8 +3,7 @@ import os
 from PIL import Image, ImageTk
 os.system('cls')
 
-bg_path = os.path.dirname(__file__)
-bg_path = bg_path + "\\bg_img.jpg"
+bg_path = r"C:\Users\muzo1\Desktop\Coding\Projects\PySleeper\bg_img.jpg"
 
 
 def shutdown(): #Shutdown Mode
@@ -18,11 +17,16 @@ def sleep():  #Sleep Mode
     #subprocess.run('cmd /k "timeout /t %d&&rundll32.exe powrprof.dll,SetSuspendState Sleep"' %seconds)
     os.system('cmd /k "timeout /t %d&&rundll32.exe powrprof.dll,SetSuspendState Sleep"'% seconds)
     os.system("exit")
+    
+def fixedsleep():  #Sleep Mode
+    seconds = 45 * 60
+    #subprocess.run('cmd /k "timeout /t %d&&rundll32.exe powrprof.dll,SetSuspendState Sleep"' %seconds)
+    os.system('cmd /k "timeout /t %d&&rundll32.exe powrprof.dll,SetSuspendState Sleep"'% seconds)
+    os.system("exit")
 
 
 def cancel():  #Cancel Shutdown
     os.system('cmd /c "shutdown -a')
-    print(test)
 
 app =  Tk()  #Create the window
 
@@ -47,10 +51,13 @@ header = Label(
 )
 
 #Positioning
-header.place(relx=0.34,rely=0.6, relwidth=0.35,relheight=0.05)
+header.place(relx=0.34,rely=0.55, relwidth=0.35,relheight=0.05)
 
 timeBox = Entry(app, width = 15, background="SlateBlue",relief="sunken",foreground="White")
-timeBox.place(relx=0.42,rely=0.65, relwidth=0.2,relheight=0.05)
+timeBox.place(relx=0.42,rely=0.6, relwidth=0.2,relheight=0.05)
+
+fixedsleep = Button(app, text="Sleep in 45 min", command=fixedsleep, height=2, width=15,background="MidnightBlue",relief="ridge",foreground="MediumSlateBlue")
+fixedsleep.place(relx=0.42,rely=0.65, relwidth=0.2,relheight=0.05)
 
 sleep = Button(app, text="Sleep", command=sleep, height=2, width=15,background="MidnightBlue",relief="ridge",foreground="MediumSlateBlue")
 sleep.place(relx=0.42,rely=0.75, relwidth=0.2,relheight=0.05)
