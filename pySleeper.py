@@ -1,11 +1,13 @@
 from tkinter import *
 import os
-from PIL import Image, ImageTk
+# from PIL import Image, ImageTk
 os.system('cls')
 
-bg_path = r"C:\Users\muzo1\Desktop\Coding\Projects\PySleeper\bg_img.jpg"
+# BG image is disabled because PIL library was creating issues.
 
+# bg_path = r"C:\Users\muzo1\Desktop\Coding\Projects\PySleeper\bg_img.jpg"
 
+# Button Functionality
 def shutdown(): #Shutdown Mode
     time = timeBox.get()
     seconds = int(time) * 60
@@ -24,7 +26,6 @@ def fixedsleep():  #Sleep Mode
     os.system('cmd /k "timeout /t %d&&rundll32.exe powrprof.dll,SetSuspendState Sleep"'% seconds)
     os.system("exit")
 
-
 def cancel():  #Cancel Shutdown
     os.system('cmd /c "shutdown -a')
 
@@ -35,9 +36,9 @@ app.configure(background="MidnightBlue", cursor="star")
 app.title("pySleeper - Sleep Time")  #Header
 
 #Background Image Implemantation
-bg_img = ImageTk.PhotoImage(Image.open(bg_path))
+# bg_img = ImageTk.PhotoImage(Image.open(bg_path))
 canvas = Canvas(app, width=600, height=300, background="NavyBlue")
-canvas.create_image(1280, 720, image = bg_img, anchor=SE)
+# canvas.create_image(1280, 720, image = bg_img, anchor=SE)
 canvas.pack(expand=TRUE, fill=BOTH)
 
 app.geometry("1024x700") #Scale
@@ -67,7 +68,5 @@ shutdown.place(relx=0.42,rely=0.70, relwidth=0.2,relheight=0.05)
 
 cancel = Button(app, text="Cancel the shutdown", command=cancel, height=2, width=15,background="MidnightBlue",relief="ridge",foreground="MediumSlateBlue")
 cancel.place(relx=0.42,rely=0.8, relwidth=0.2,relheight=0.05)
-
-
 
 app.mainloop()
